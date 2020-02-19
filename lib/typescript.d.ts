@@ -5721,6 +5721,7 @@ declare namespace ts {
         optionalModifier = "optional",
         dtsModifier = ".d.ts",
         tsModifier = ".ts",
+        mjsModifier = ".mjs",
         tsxModifier = ".tsx",
         jsModifier = ".js",
         jsxModifier = ".jsx",

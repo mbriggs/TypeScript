@@ -5723,6 +5723,7 @@ declare namespace ts {
         tsModifier = ".ts",
         tsxModifier = ".tsx",
         jsModifier = ".js",
+        mjsModifier = ".mjs",
         jsxModifier = ".jsx",
         jsonModifier = ".json"
     }

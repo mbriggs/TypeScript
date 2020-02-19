@@ -1103,7 +1103,7 @@ namespace ts {
             case Extensions.TypeScript:
                 return tryExtension(Extension.Ts) || tryExtension(Extension.Tsx) || tryExtension(Extension.Dts);
             case Extensions.JavaScript:
-                return tryExtension(Extension.Js) || tryExtension(Extension.Jsx);
+                return tryExtension(Extension.Js) || tryExtension(Extension.Jsx) || tryExtension(Extension.Mjs);
             case Extensions.TSConfig:
             case Extensions.Json:
                 return tryExtension(Extension.Json);
@@ -1242,7 +1242,7 @@ namespace ts {
     function extensionIsOk(extensions: Extensions, extension: Extension): boolean {
         switch (extensions) {
             case Extensions.JavaScript:
-                return extension === Extension.Js || extension === Extension.Jsx;
+                return extension === Extension.Js || extension === Extension.Jsx || extension === Extension.Mjs;
             case Extensions.TSConfig:
             case Extensions.Json:
                 return extension === Extension.Json;

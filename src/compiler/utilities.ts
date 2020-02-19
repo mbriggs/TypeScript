@@ -8048,6 +8048,7 @@ namespace ts {
     export function getScriptKindFromFileName(fileName: string): ScriptKind {
         const ext = fileName.substr(fileName.lastIndexOf("."));
         switch (ext.toLowerCase()) {
+            case Extension.Mjs:
             case Extension.Js:
                 return ScriptKind.JS;
             case Extension.Jsx:
@@ -8070,8 +8071,8 @@ namespace ts {
     export const supportedTSExtensionsWithJson: readonly Extension[] = [Extension.Ts, Extension.Tsx, Extension.Dts, Extension.Json];
     /** Must have ".d.ts" first because if ".ts" goes first, that will be detected as the extension instead of ".d.ts". */
     export const supportedTSExtensionsForExtractExtension: readonly Extension[] = [Extension.Dts, Extension.Ts, Extension.Tsx];
-    export const supportedJSExtensions: readonly Extension[] = [Extension.Js, Extension.Jsx];
-    export const supportedJSAndJsonExtensions: readonly Extension[] = [Extension.Js, Extension.Jsx, Extension.Json];
+    export const supportedJSExtensions: readonly Extension[] = [Extension.Js, Extension.Jsx, Extension.Mjs];
+    export const supportedJSAndJsonExtensions: readonly Extension[] = [Extension.Js, Extension.Jsx, Extension.Json, Extension.Mjs];
     const allSupportedExtensions: readonly Extension[] = [...supportedTSExtensions, ...supportedJSExtensions];
     const allSupportedExtensionsWithJson: readonly Extension[] = [...supportedTSExtensions, ...supportedJSExtensions, Extension.Json];
 
@@ -8179,7 +8180,7 @@ namespace ts {
         }
     }
 
-    const extensionsToRemove = [Extension.Dts, Extension.Ts, Extension.Js, Extension.Tsx, Extension.Jsx, Extension.Json];
+    const extensionsToRemove = [Extension.Dts, Extension.Ts, Extension.Js, Extension.Tsx, Extension.Jsx, Extension.Json, Extension.Mjs];
     export function removeFileExtension(path: string): string {
         for (const ext of extensionsToRemove) {
             const extensionless = tryRemoveExtension(path, ext);
